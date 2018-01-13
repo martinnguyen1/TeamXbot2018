@@ -3,6 +3,10 @@ package competition.operator_interface;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
+import competition.subsystems.prototypeGripper.commands.LeftIntakeCommand;
+import competition.subsystems.prototypeGripper.commands.ProtoGripperIntake;
+import competition.subsystems.prototypeGripper.commands.RightIntake;
+import competition.subsystems.prototypeGripper.commands.ToggleClawCommand;
 import xbot.common.controls.sensors.XJoystick;
 import xbot.common.injection.wpi_factories.CommonLibFactory;
 import xbot.common.logging.RobotAssertionManager;
@@ -23,5 +27,19 @@ public class OperatorInterface {
 
         leftJoystick.setYInversion(true);
         rightJoystick.setXInversion(true);
+        
+    }
+    
+    @Inject
+    public void setupPrototype(LeftIntakeCommand intakeLeft,
+    		RightIntake intakeRight,
+    		ProtoGripperIntake intakeBoth,
+    		ToggleClawCommand claw) {
+    	
+    	leftJoystick.getifAvailable(1).whileHeld(intakeLeft);
+    	leftJoystick.getifAvailable(2).whileHeld(intakeRight);
+    	leftJoystick.getifAvailable(3).whileHeld(intakeBoth);
+    	leftJoystick.getifAvailable(4).whileHeld(claw);
+    	
     }
 }
