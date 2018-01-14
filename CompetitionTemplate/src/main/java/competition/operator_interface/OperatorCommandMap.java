@@ -36,8 +36,8 @@ public class OperatorCommandMap {
 		oi.gamepad.getifAvailable(1).whileHeld(intakeLeft);
 		oi.gamepad.getifAvailable(2).whileHeld(intakeRight);
 		oi.gamepad.getifAvailable(3).whileHeld(intakeBoth);
-		oi.gamepad.getifAvailable(4).whenPressed(claw);
 		
+		oi.gamepad.getifAvailable(4).whenPressed(claw);
 		oi.gamepad.getifAvailable(5).whenPressed(shift);
 	}
     	

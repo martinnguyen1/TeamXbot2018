@@ -24,6 +24,10 @@ public class ToggleClawCommand extends BaseProtoGripperCommand {
 		
 	}
 	
+	@Override
+	public boolean isFinished() {
+		return true;
+	}
 	
 
 }

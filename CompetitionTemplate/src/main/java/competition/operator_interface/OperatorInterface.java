@@ -30,7 +30,7 @@ public class OperatorInterface {
         gamepad = factory.createGamepad(3, 10);
         
         gamepad.setLeftStickYInversion(true);
-        gamepad.setRightStickYInversion(true);
+        gamepad.setRightStickYInversion(false);
         
         leftJoystick.setYInversion(true);
         rightJoystick.setXInversion(true);
