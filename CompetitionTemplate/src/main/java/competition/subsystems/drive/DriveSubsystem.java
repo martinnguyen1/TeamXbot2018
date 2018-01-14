@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -36,13 +37,19 @@ public class DriveSubsystem extends BaseDriveSubsystem{
         
         leftMaster.setInverted(true);
         leftFollower.setInverted(true);
+        
+        leftMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
 
-        this.rightMaster = factory.createCANTalon(21);
-        this.rightFollower = factory.createCANTalon(20);
+        // Note - this is deliberately different from the contract. At some point things
+        // got flipped.
+        this.rightMaster = factory.createCANTalon(20);
+        this.rightFollower = factory.createCANTalon(21);
         rightFollower.follow(rightMaster);
         rightFollower.setInverted(true);
         
         this.rightMaster.setInverted(true);
+        rightMaster.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
+        
         masterTalons = new HashMap<XCANTalon, BaseDriveSubsystem.MotionRegistration>();
         masterTalons.put(leftMaster, new MotionRegistration(0, 1, -1));
         masterTalons.put(rightMaster, new MotionRegistration(0, 1, 1));
