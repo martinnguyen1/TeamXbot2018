@@ -28,8 +28,8 @@ public class PrototypeGripperSubsystem extends BaseSubsystem {
 	
 	@Inject
 	public PrototypeGripperSubsystem(XPropertyManager propMan, CommonLibFactory clf) {
-		leftRoller = clf.createCANTalon(44);
-		rightRoller = clf.createCANTalon(45);
+		leftRoller = clf.createCANTalon(25);
+		rightRoller = clf.createCANTalon(27);
 		
 		claw = clf.createSolenoid(6);
 		
