@@ -3,6 +3,7 @@ package competition.operator_interface;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
+import competition.subsystems.prototypeGripper.commands.BothEjectCommand;
 import competition.subsystems.prototypeGripper.commands.LeftIntakeCommand;
 import competition.subsystems.prototypeGripper.commands.ProtoGripperIntake;
 import competition.subsystems.prototypeGripper.commands.RightIntake;
@@ -31,14 +32,16 @@ public class OperatorCommandMap {
     		RightIntake intakeRight,
     		ProtoGripperIntake intakeBoth,
     		ToggleClawCommand claw,
-    		ToggleShiftCommand shift) {
+    		ToggleShiftCommand shift,
+    		BothEjectCommand eject) {
     	
 		oi.gamepad.getifAvailable(1).whileHeld(intakeLeft);
 		oi.gamepad.getifAvailable(2).whileHeld(intakeRight);
-		oi.gamepad.getifAvailable(3).whileHeld(intakeBoth);
+		oi.gamepad.getifAvailable(3).whenPressed(shift);
 		
 		oi.gamepad.getifAvailable(4).whenPressed(claw);
-		oi.gamepad.getifAvailable(5).whenPressed(shift);
+		oi.gamepad.getifAvailable(5).whileHeld(intakeBoth);
+		oi.gamepad.getifAvailable(6).whileHeld(eject);
 	}
     	
 }
