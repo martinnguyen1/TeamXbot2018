@@ -31,7 +31,7 @@ public class PrototypeGripperSubsystem extends BaseSubsystem {
 		leftRoller = clf.createCANTalon(44);
 		rightRoller = clf.createCANTalon(45);
 		
-		claw = clf.createSolenoid(1);
+		claw = clf.createSolenoid(6);
 		
 		fastRollerSpeed = propMan.createPersistentProperty("FastRollerSpeed", 0.8);
 		slowRollerSpeed = propMan.createPersistentProperty("SlowRollerSpeed", 0.4);
